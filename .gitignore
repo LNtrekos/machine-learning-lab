@@ -8,3 +8,11 @@ __pycache__/
 # Agents file 
 AGENTS.md 
 
+# Ingore ingore git
+.gitignore
+
+# Ignore any pdf file 
+*.pdf
+
+# Ignore any image
+*.png
