@@ -1,15 +1,13 @@
-from autograd.neural_network import Value
+from autograd.classes import Value
 
 
-a = Value(5.0, label="a", _op = '')
-b = Value(21.0, label="b", _op = '')
+a = Value(2.0)
+b = Value(-3.0)
+c = Value(10.0)
+c = a+b
+d = a*b + c
 print(a)
-print(repr(a))
 print(b)
-print(a + b)
-print(repr(a + b))
-print(a * b)
-print(repr(a * b))
+print(c)
+print(d)
 
-print(a + 1)
-print(b + 2)
