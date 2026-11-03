@@ -9,5 +9,6 @@ d = a*b + c
 print(a)
 print(b)
 print(c)
-print(d)
+print(f"c: {c}, c children: {c._prev}, by {c._op}")
+print(f"d: {d}, d children: {d._prev}, by {d._op}")
 
