@@ -14,7 +14,9 @@ def trace(root):
 
 
 def draw_dot(root):
+    
     from graphviz import Digraph 
+
     dot = Digraph(format = "svg", graph_attr={"rankdir": "LR"}) # LR = left to right
 
     nodes, edges = trace(root)
@@ -23,7 +25,7 @@ def draw_dot(root):
         uid = str(id(n))
 
         # for any value in the graph, crate a rectangular ("record") node for it 
-        dot.node(name = uid, label = "{ data %.4f }" % (n.data, ), shape = 'record')
+        dot.node(name = uid, label = "{ %s | data %.2f | grad %.2f}" % (n.label, n.data, n.grad), shape = 'record')
         
         if n._op:
             # if this value is a result of some operatio, create an op node for it
