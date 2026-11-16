@@ -1,30 +1,21 @@
-from classes import Value
+from classes import MLP
 from ultils import trace, draw_dot
 
 
-# inputs x1, x2
-x1 = Value(2.0, label ="x1")
-x2 = Value(0.0, label ="x2")
+xs = [
+        [2.0, 3.0, -1.0],
+        [3.0, -1.0, 0.5],
+        [1.0, 1.0, -1.0]
+]
 
-# add weights w1, w2
-w1 = Value(-3.0, label ="w1")
-w2 = Value(1.0, label ="w2")
+ys = [1.0, -1.0, -1.0, 1.0]
 
-# add bias
-b = Value(6.8813735870195432, label ="b")
+n = MLP(2, [4, 1])
+ypred = [n(x) for x in xs]
 
-x1w1 = x1*w1; x1w1.label = "x1w1"
-x2w2 = x2*w2; x2w2.label = "x2w2"
-x1w1x2w2 = x1w1 + x2w2; x1w1x2w2.label = "x1w1 + x2w2"
+loss = sum((y_i - y_hat)**2 for y_i, y_hat in zip(ys, ypred))
+print(loss)
 
-n = x1w1x2w2 + b; n.label = "n"
-o = n.tanh(); o.label = "o" 
-
-o.backward()
-dot = draw_dot(o)
-
-
-dot.render(directory = "/graphviz_output", view = True)
-
-
+loss_dot = draw_dot(loss)
+loss_dot.render(directory = 'graphviz_outputs', view=True)
 

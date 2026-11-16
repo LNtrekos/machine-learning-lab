@@ -1,3 +1,5 @@
+from graphviz import Digraph 
+
 def trace(root):
     
     nodes, edges = set(), set()
@@ -15,7 +17,6 @@ def trace(root):
 
 def draw_dot(root):
     
-    from graphviz import Digraph 
 
     dot = Digraph(format = "svg", graph_attr={"rankdir": "LR"}) # LR = left to right
 
